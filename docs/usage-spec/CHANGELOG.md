@@ -2,6 +2,19 @@
 
 > 记录 `docs/usage-spec` 分支上每次版本变动。最新版本在最上方。
 
+## v1.1 — 2026-10-27
+
+### 变更内容
+- 将"如何使用 dsh-dfy-Agent 仓库"打包为 DSH Skill。
+- Skill 名称：`dsh-dfy-agent`；位置：`resources/runtime/office-skills/dsh-dfy-agent/SKILL.md`。
+- 内容覆盖：仓库信息、分支约定、目录结构、使用规范版本管理、常用命令、工作流程、提交规范。
+- 归档文件：`usage-spec-v1.1.md`。
+
+### 操作记录
+- 在 `office-skills` 下新建 `dsh-dfy-agent/SKILL.md`（YAML frontmatter + Markdown）。
+- 预留 `references/` 子目录。
+- 规范升版：v1.0 → v1.1。
+
 ## v1.0 — 2026-10-27
 
 ### 变更内容

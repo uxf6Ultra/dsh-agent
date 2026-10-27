@@ -1,0 +1,108 @@
+# 使用规范与工作总结（v1.1）
+
+> 仓库：`dsh-dfy-Agent`（原 `dsh-agent`）
+> 维护方：DeepSeek Harness (DSH) 智能体
+> 最近一次更新：2026-10-27
+
+---
+
+## 〇、本版本变更（v1.1 · 2026-10-27）
+
+### 变更内容
+- **新增 Skill 打包**：将"如何使用 dsh-dfy-Agent 仓库"打包为 DSH Skill。
+- Skill 名称：`dsh-dfy-agent`
+- 位置：`<DSH安装目录>\resources\runtime\office-skills\dsh-dfy-agent\SKILL.md`
+- 内容：仓库信息、分支约定、目录结构、使用规范版本管理、常用命令、工作流程、提交规范。
+
+### 操作记录
+- 在 `office-skills` 技能目录下新建 `dsh-dfy-agent/SKILL.md`（含 YAML frontmatter）。
+- 预留 `references/` 子目录供后续扩展。
+- 本规范同步升版 v1.0 → v1.1，记录本次变动。
+
+---
+
+## 一、仓库定位
+
+本仓库是 **DSH 智能体（我）** 的个人工作仓库：
+- 存放智能体入口、项目源码、各项目版本。
+- `main` 分支始终保持可运行、可交付。
+- 结构与命名力求简洁、可读、易扩展。
+
+---
+
+## 二、本次工作总结（2026-10-27）
+
+### 背景
+
+原仓库 `dsh-agent`（`uxf6Ultra/dsh-agent`）是给智能体使用的个人项目仓库，
+名称不便记忆，且内容为空壳（旧 README、main.py、.gitignore，2 条历史提交）。
+
+### 执行的操作
+
+| 步骤 | 操作 | 说明 |
+|------|------|------|
+| 1 | 仓库改名 | `dsh-agent` → `dsh-dfy-Agent`（GitHub 上完成） |
+| 2 | 本地克隆 | 克隆到 `E:\dsh-dfy-Agent` |
+| 3 | 彻底清空 | 用孤儿分支重建，**删除全部旧文件与历史提交**（方案二） |
+| 4 | 创建骨架 | 新增 `README.md`、`AGENTS.md`、`main.py`、`.gitignore` |
+| 5 | 主干重建 | 新的根提交 `bcfe3a7` 强制推送为 `main` |
+| 6 | 预留分支 | 新增 `projects/example/v1` 作为项目版本分支示例 |
+| 7 | 清理 | 删除临时分支 `fresh-main`、冲突分支 `projects` |
+
+### 实现的功能修改
+
+- **仓库名**：`dsh-agent` → `dsh-dfy-Agent`，更贴合"DSH 智能体专用"且易记。
+- **内容重建**：旧占位内容 → 简洁清晰的智能体工作骨架。
+- **历史重置**：提交历史归零，只保留 1 个根提交，起点干净。
+- **分支体系**：确立 `main`（稳定主干）+ `projects/<项目>/<版本>`（项目版本）体系。
+
+---
+
+## 三、使用规范
+
+### 1. 分支规范
+
+| 分支 | 用途 | 要求 |
+|------|------|------|
+| `main` | 稳定主干 | 始终可运行；合入前须验证 |
+| `docs/usage-spec` | 使用规范与工作总结 | 维护本文件 |
+| `projects/<项目名>/<版本>` | 具体项目及其版本 | 每个项目按版本推进 |
+
+> 注意：Git 不允许 `projects` 与 `projects/xxx` 同时存在（斜杠冲突），
+> 因此不建独立的 `projects` 分支，直接用 `projects/<项目>/<版本>`。
+
+### 2. 目录规范
+
+```
+dsh-dfy-Agent/
+├── README.md        仓库说明（用途、结构、分支）
+├── AGENTS.md        给智能体看的操作规则
+├── main.py          智能体入口
+├── docs/            规范与文档（本文件所在）
+└── projects/        各项目（按需创建）
+```
+
+### 3. 工作流程
+
+1. 新项目 → 新建分支 `projects/<项目名>/v1`。
+2. 在 `projects/<项目名>/` 下维护代码。
+3. 版本迭代 → 新建 `projects/<项目名>/v2`（或打 tag）。
+4. 稳定成果 → 合入 `main`，保持主干可运行。
+5. 每次重要操作 → 更新本文件（时间、操作、变更）。
+
+### 4. 提交信息规范
+
+- 格式：`<类型>: <简述>`
+- 类型：`feat`（新功能）、`fix`（修复）、`docs`（文档）、`refactor`（重构）、`chore`（杂项）
+- 示例：`docs: 添加使用规范分支与工作总结`
+
+---
+
+## 四、快速参考
+
+| 事项 | 命令 |
+|------|------|
+| 克隆 | `git clone git@github.com:uxf6Ultra/dsh-dfy-Agent.git` |
+| 运行入口 | `python main.py` |
+| 新建项目分支 | `git checkout -b projects/<项目名>/v1` |
+| 查看分支 | `git branch -a` |
